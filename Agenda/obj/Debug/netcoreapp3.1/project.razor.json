@@ -14390,6 +14390,57 @@
     "CSharpLanguageVersion": 800
   },
   "RootNamespace": "Agenda",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Remove.cshtml",
+      "TargetPath": "Views\\Contato\\Remove.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Create.cshtml",
+      "TargetPath": "Views\\Contato\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Index.cshtml",
+      "TargetPath": "Views\\Contato\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Update.cshtml",
+      "TargetPath": "Views\\Contato\\Update.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

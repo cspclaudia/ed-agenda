@@ -9,12 +9,12 @@ namespace Agenda.Services
     {
         private readonly IMongoCollection<Contato> _contatos;
 
-        public ContatoService (IAgendaDatabaseSettings settings)
+        public ContatoService (IDatabaseSettings settings)
         {
             var client = new MongoClient (settings.ConnectionString);
             var database = client.GetDatabase (settings.DatabaseName);
 
-            _contatos = database.GetCollection<Contato> (settings.ContatosCollectionName);
+            _contatos = database.GetCollection<Contato> (settings.CollectionName);
         }
 
         public List<Contato> Get () =>

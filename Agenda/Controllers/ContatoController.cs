@@ -1,13 +1,18 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Agenda.Models;
 using Agenda.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Controllers
 {
     [Route ("api/[controller]")]
     [ApiController]
-    public class ContatoController : ControllerBase
+    public class ContatoController : Controller
     {
         private readonly ContatoService _contatoService;
 
@@ -15,6 +20,9 @@ namespace Agenda.Controllers
         {
             _contatoService = contatoService;
         }
+
+        [AllowAnonymous]
+        public ActionResult<IList<Contato>> Index () => View (_contatoService.Get ());
 
         [HttpGet]
         public ActionResult<List<Contato>> Get () =>
@@ -33,6 +41,9 @@ namespace Agenda.Controllers
             return contato;
         }
 
+        [HttpGet]
+        public ActionResult Create() => View();
+
         [HttpPost]
         public ActionResult<Contato> Create (Contato contato)
         {
@@ -40,6 +51,9 @@ namespace Agenda.Controllers
 
             return CreatedAtRoute ("GetContato", new { id = contato.Id.ToString () }, contato);
         }
+
+        [HttpGet]
+        public ActionResult<Contato> Update(string id) => View(_contatoService.Get(id));
 
         [HttpPut ("{id:length(24)}")]
         public IActionResult Update (string id, Contato contatoIn)
@@ -57,7 +71,7 @@ namespace Agenda.Controllers
         }
 
         [HttpDelete ("{id:length(24)}")]
-        public IActionResult Delete (string id)
+        public IActionResult Remove (string id)
         {
             var contato = _contatoService.Get (id);
 
