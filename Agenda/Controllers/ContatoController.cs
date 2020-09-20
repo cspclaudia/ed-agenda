@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Controllers
 {
-    [Route ("api/[controller]")]
-    [ApiController]
+    // [Route ("api/[controller]")]
+    // [ApiController]
     public class ContatoController : Controller
     {
         private readonly ContatoService _contatoService;
@@ -21,7 +21,7 @@ namespace Agenda.Controllers
             _contatoService = contatoService;
         }
 
-        [AllowAnonymous]
+        // [AllowAnonymous]
         public ActionResult<IList<Contato>> Index () => View (_contatoService.Get ());
 
         [HttpGet]
@@ -42,20 +42,20 @@ namespace Agenda.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create() => View();
+        public ActionResult Create () => View ();
 
         [HttpPost]
         public ActionResult<Contato> Create (Contato contato)
         {
             _contatoService.Create (contato);
 
-            return CreatedAtRoute ("GetContato", new { id = contato.Id.ToString () }, contato);
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public ActionResult<Contato> Update(string id) => View(_contatoService.Get(id));
+        // [HttpPut]
+        public ActionResult Update (string id) => View (_contatoService.Get (id));
 
-        [HttpPut ("{id:length(24)}")]
+        [HttpPut]
         public IActionResult Update (string id, Contato contatoIn)
         {
             var contato = _contatoService.Get (id);
@@ -67,11 +67,14 @@ namespace Agenda.Controllers
 
             _contatoService.Update (id, contatoIn);
 
-            return NoContent ();
+            return RedirectToAction("Index");
         }
 
-        [HttpDelete ("{id:length(24)}")]
-        public IActionResult Remove (string id)
+        // [HttpDelete]
+        public ActionResult Remove (string id) => View (_contatoService.Get (id));
+
+        [HttpDelete]
+        public IActionResult Remove (string id, Contato contatoIn)
         {
             var contato = _contatoService.Get (id);
 
@@ -82,7 +85,7 @@ namespace Agenda.Controllers
 
             _contatoService.Remove (contato.Id);
 
-            return NoContent ();
+            return RedirectToAction("Index");
         }
     }
 }

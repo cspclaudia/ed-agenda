@@ -1,7 +1,7 @@
 @model Agenda.Models.Contato
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Remove";
 }
 
 <h1>Excluir</h1>
@@ -40,6 +40,6 @@
     <form asp-action="Remove">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Confirmar" class="btn btn-danger" /> |
-        <a asp-action="Get">Voltar</a>
+        <a asp-action="Index">Voltar</a>
     </form>
 </div>
