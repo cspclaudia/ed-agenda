@@ -34,6 +34,7 @@ namespace Agenda
                 sp.GetRequiredService<IOptions<DatabaseSettings>> ().Value);
 
             services.AddSingleton<ContatoService> ();
+            services.AddSingleton<BookService> ();
 
             services.AddControllers ()
                 .AddNewtonsoftJson (options => options.UseMemberCasing ());

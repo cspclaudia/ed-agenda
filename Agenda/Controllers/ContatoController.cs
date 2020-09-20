@@ -55,7 +55,7 @@ namespace Agenda.Controllers
         // [HttpPut]
         public ActionResult Update (string id) => View (_contatoService.Get (id));
 
-        [HttpPut]
+        [HttpPost]
         public IActionResult Update (string id, Contato contatoIn)
         {
             var contato = _contatoService.Get (id);
@@ -73,7 +73,7 @@ namespace Agenda.Controllers
         // [HttpDelete]
         public ActionResult Remove (string id) => View (_contatoService.Get (id));
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult Remove (string id, Contato contatoIn)
         {
             var contato = _contatoService.Get (id);

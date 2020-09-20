@@ -14,7 +14,7 @@ namespace Agenda.Services
             var client = new MongoClient (settings.ConnectionString);
             var database = client.GetDatabase (settings.DatabaseName);
 
-            _contatos = database.GetCollection<Contato> (settings.CollectionName);
+            _contatos = database.GetCollection<Contato> (settings.ContatosCollectionName);
         }
 
         public List<Contato> Get () =>
