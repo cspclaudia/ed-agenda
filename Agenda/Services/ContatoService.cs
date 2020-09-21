@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Agenda.Models;
@@ -23,11 +24,8 @@ namespace Agenda.Services
         public Contato Get (string id) =>
             _contatos.Find<Contato> (contato => contato.Id == id).FirstOrDefault ();
 
-        public Contato Create (Contato contato)
-        {
+        public void Create (Contato contato)  =>
             _contatos.InsertOne (contato);
-            return contato;
-        }
 
         public void Update (string id, Contato contatoIn) =>
             _contatos.ReplaceOne (contato => contato.Id == id, contatoIn);

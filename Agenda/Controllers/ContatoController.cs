@@ -10,18 +10,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Controllers
 {
-    // [Route ("api/[controller]")]
-    // [ApiController]
     public class ContatoController : Controller
     {
         private readonly ContatoService _contatoService;
+        private readonly BookService _bookService;
 
-        public ContatoController (ContatoService contatoService)
+        public ContatoController (ContatoService contatoService, BookService bookService)
         {
             _contatoService = contatoService;
+            _bookService = bookService;
         }
 
-        // [AllowAnonymous]
         public ActionResult<IList<Contato>> Index () => View (_contatoService.Get ());
 
         [HttpGet]
@@ -45,10 +44,10 @@ namespace Agenda.Controllers
         public ActionResult Create () => View ();
 
         [HttpPost]
-        public ActionResult<Contato> Create (Contato contato)
+        public ActionResult<Contato> Create (Contato contato, string id = "5f6935b15818d28c65110415")
         {
             _contatoService.Create (contato);
-
+            _bookService.AddContato (contato, id);
             return RedirectToAction("Index");
         }
 

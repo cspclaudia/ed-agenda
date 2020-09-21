@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Agenda.Models;
@@ -17,6 +18,11 @@ namespace Agenda.Services
             _books = database.GetCollection<Book> (settings.BooksCollectionName);
         }
 
+        public void AddContato (Contato contato, string id) {
+            var book = _books.Find<Book> (book => book.Id == id).FirstOrDefault ();
+            book.Lista.AddFirst(contato);
+        }
+
         public List<Book> Get () =>
             _books.Find (book => true).ToList ();
 
@@ -25,7 +31,12 @@ namespace Agenda.Services
 
         public Book Create (Book book)
         {
-            _books.InsertOne (book);
+            try {
+                _books.InsertOne (book);
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
             return book;
         }
 
