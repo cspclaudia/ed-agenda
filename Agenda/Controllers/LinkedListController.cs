@@ -26,64 +26,63 @@ namespace Agenda.Controllers
         public ActionResult<List<LinkedList>> Get () =>
             _linkedListService.Get ();
 
-        [HttpGet ("{id:length(24)}", Name = "GetLinkedList")]
-        public ActionResult<LinkedList> Get (string id)
-        {
-            var linkedList = _linkedListService.Get (id);
+        // [HttpGet ("{id:length(24)}", Name = "GetLinkedList")]
+        // public ActionResult<LinkedList> Get (string id)
+        // {
+        //     var linkedList = _linkedListService.Get (id);
 
-            if (linkedList == null)
-            {
-                return NotFound ();
-            }
+        //     if (linkedList == null)
+        //     {
+        //         return NotFound ();
+        //     }
 
-            return linkedList;
-        }
+        //     return linkedList;
+        // }
 
         [HttpGet]
         public ActionResult Create () => View ();
 
         [HttpPost]
-        public ActionResult<Contato> Create (Contato contato)
+        public ActionResult<LinkedList> Create (Contato contato)
         {
-            // _contatoService.Create (contato);
             _linkedListService.Add (contato);
-            return RedirectToAction("Index", "LinkedList");
+            return RedirectToAction("Index");
         }
 
         // [HttpPut]
-        public ActionResult Update (string id) => View (_linkedListService.Get (id));
+        // public ActionResult Update (string id) => View (_linkedListService.Get (id));
 
-        [HttpPost]
-        public IActionResult Update (string id, LinkedList linkedListIn)
-        {
-            var linkedList = _linkedListService.Get (id);
+        // [HttpPost]
+        // public IActionResult Update (string id, LinkedList linkedListIn)
+        // {
+        //     var linkedList = _linkedListService.Get (id);
 
-            if (linkedList == null)
-            {
-                return NotFound ();
-            }
+        //     if (linkedList == null)
+        //     {
+        //         return NotFound ();
+        //     }
 
-            _linkedListService.Update (id, linkedListIn);
+        //     _linkedListService.Update (id, linkedListIn);
 
-            return RedirectToAction("Index");
-        }
+        //     return RedirectToAction("Index");
+        // }
 
         // [HttpDelete]
-        public ActionResult Remove (string id) => View (_linkedListService.Get (id));
+        // public ActionResult Remove (string id) => View (_linkedListService.Get (id));
 
-        [HttpPost]
-        public IActionResult Remove (string id, LinkedList linkedListIn)
-        {
-            var linkedList = _linkedListService.Get (id);
+        // [HttpPost]
+        // public IActionResult Remove (string id, LinkedList linkedListIn)
+        // {
+        //     var linkedList = _linkedListService.Get (id);
 
-            if (linkedList == null)
-            {
-                return NotFound ();
-            }
+        //     if (linkedList == null)
+        //     {
+        //         return NotFound ();
+        //     }
 
-            _linkedListService.Remove (linkedList.Id);
+        //     _linkedListService.Remove (linkedList.Id);
 
-            return RedirectToAction("Index");
-        }
+        //     return RedirectToAction("Index");
+        // }
     }
 }
