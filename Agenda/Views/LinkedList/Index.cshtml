@@ -1,13 +1,13 @@
-@model IEnumerable<Agenda.Models.Book>
+@model IEnumerable<Agenda.Models.LinkedList>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Agendas</h1>
+<h1>Contatos</h1>
 
 <p>
-    <a asp-action="Create">Inserir Agenda</a>
+    <a asp-controller="Contato" asp-action="Create">Inserir Contato</a>
 </p>
 <table class="table">
     <thead>
@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.Head)
             </th>
             <th></th>
         </tr>
@@ -28,10 +28,9 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nome)
+                @Html.DisplayFor(modelItem => item.Head)
             </td>
             <td>
-                <a asp-controller="Contato" asp-action="Index" asp-route-id="@item.Id">Contatos</a> |
                 <a asp-action="Update" asp-route-id="@item.Id">Editar</a> |
                 <a asp-action="Remove" asp-route-id="@item.Id">Excluir</a>
             </td>

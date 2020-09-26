@@ -13,15 +13,15 @@ namespace Agenda.Controllers
     public class ContatoController : Controller
     {
         private readonly ContatoService _contatoService;
-        private readonly BookService _bookService;
+        private readonly LinkedListService _linkedListService;
 
-        public ContatoController (ContatoService contatoService, BookService bookService)
+        public ContatoController (ContatoService contatoService, LinkedListService linkedListService)
         {
             _contatoService = contatoService;
-            _bookService = bookService;
+            _linkedListService = linkedListService;
         }
 
-        public ActionResult<IList<Contato>> Index () => View (_contatoService.Get ());
+        public ActionResult<IList<LinkedList>> Index () => View (_linkedListService.Get ());
 
         [HttpGet]
         public ActionResult<List<Contato>> Get () =>
@@ -44,11 +44,11 @@ namespace Agenda.Controllers
         public ActionResult Create () => View ();
 
         [HttpPost]
-        public ActionResult<Contato> Create (Contato contato, string id = "5f6935b15818d28c65110415")
+        public ActionResult<Contato> Create (Contato contato)
         {
-            _contatoService.Create (contato);
-            _bookService.AddContato (contato, id);
-            return RedirectToAction("Index");
+            // _contatoService.Create (contato);
+            _linkedListService.Add (contato);
+            return RedirectToAction("Index", "LinkedList");
         }
 
         // [HttpPut]

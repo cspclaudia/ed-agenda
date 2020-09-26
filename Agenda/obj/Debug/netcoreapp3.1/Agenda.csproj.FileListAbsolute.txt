@@ -51,7 +51,7 @@ C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.pdb
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.genruntimeconfig.cache
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Contato\Index.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Book\Create.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Book\Remove.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Book\Update.cshtml.g.cs
+C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Create.cshtml.g.cs
+C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Index.cshtml.g.cs
+C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Remove.cshtml.g.cs
+C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Update.cshtml.g.cs

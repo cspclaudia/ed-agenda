@@ -1,16 +1,10 @@
-﻿@model IEnumerable<Agenda.Models.Contato>
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">MENU</h1><br>
+    <h1 class="display-4">AGENDA</h1><br>
     <p>
-        <a href="../Book/Index">Agendas</a>
+        <a href="../LinkedList/Index">Continuar</a>
     </p>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
