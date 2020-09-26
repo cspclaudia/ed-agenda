@@ -8,32 +8,31 @@ namespace Agenda.Services
 {
     public class LinkedListService
     {
-        private readonly IMongoCollection<LinkedList> _linkedList;
+        private readonly IMongoCollection<Node> _linkedList;
 
         public LinkedListService (IDatabaseSettings settings)
         {
             var client = new MongoClient (settings.ConnectionString);
             var database = client.GetDatabase (settings.DatabaseName);
 
-            _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
+            _linkedList = database.GetCollection<Node> (settings.LinkedListCollectionName);
         }
 
         // public LinkedListService ()
         // {
         //     lista.Head = null;
         // }
-
+        private LinkedList lista = new LinkedList ();
         public void Add (Contato contato)
         {
-            var lista = new LinkedList ();
             var newNode = new Node (contato);
             newNode.Next = lista.Head;
             lista.Head = newNode;
 
-            _linkedList.InsertOne (lista);
+            _linkedList.InsertOne (newNode);
         }
 
-        public List<LinkedList> Get () =>
+        public List<Node> Get () =>
             _linkedList.Find (linkedList => true).ToList ();
 
         // public LinkedList Get (string id) =>

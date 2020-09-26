@@ -1,4 +1,4 @@
-@model IEnumerable<Agenda.Models.LinkedList>
+@model IEnumerable<Agenda.Models.Node>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Head.Contato)
+                @Html.DisplayNameFor(model => model.Contato)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Head.Next)
+                @Html.DisplayNameFor(model => model.Next)
             </th>
             <th></th>
         </tr>
@@ -31,10 +31,10 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Head.Contato)
+                @Html.DisplayFor(modelItem => item.Contato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Head.Next)
+                @Html.DisplayFor(modelItem => item.Next)
             </td>
             <td>
                 <a asp-action="Update" asp-route-id="@item.Id">Editar</a> |

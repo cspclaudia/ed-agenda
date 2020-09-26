@@ -6,9 +6,9 @@ namespace Agenda.Models
 {
     public class LinkedList
     {
-        [BsonId]
-        [BsonRepresentation (BsonType.ObjectId)]
-        public string Id { get; set; }
+        // [BsonId]
+        // [BsonRepresentation (BsonType.ObjectId)]
+        // public string Id { get; set; }
         public Node Head { get; set; }
     }
 }
