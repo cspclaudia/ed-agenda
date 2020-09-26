@@ -42,13 +42,13 @@ namespace Agenda.Controllers
         [HttpGet]
         public ActionResult Create () => View ();
 
-        // [HttpPost]
-        // public ActionResult<LinkedList> Create (LinkedList linkedList)
-        // {
-        //     _linkedListService.Create (linkedList);
-
-        //     return RedirectToAction("Index");
-        // }
+        [HttpPost]
+        public ActionResult<Contato> Create (Contato contato)
+        {
+            // _contatoService.Create (contato);
+            _linkedListService.Add (contato);
+            return RedirectToAction("Index", "LinkedList");
+        }
 
         // [HttpPut]
         public ActionResult Update (string id) => View (_linkedListService.Get (id));

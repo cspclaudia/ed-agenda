@@ -6,17 +6,17 @@ namespace Agenda.Models
 {
     public class Node
     {
-        // [BsonId]
-        // [BsonRepresentation (BsonType.ObjectId)]
-        // public string Id { get; set; }
-        public Contato contato { get; set; }
-        public Node next { get; set; }
+        [BsonId]
+        [BsonRepresentation (BsonType.ObjectId)]
+        public string Id { get; set; }
+        public Contato Contato { get; set; }
+        public Node Next { get; set; }
 
         public Node () { }
-        public Node (Contato contatoIn)
+        public Node (Contato contato)
         {
-            contato = contatoIn;
-            next = null;
+            Contato = contato;
+            Next = null;
         }
     }
 }

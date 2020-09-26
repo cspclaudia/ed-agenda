@@ -33,7 +33,6 @@ namespace Agenda
             services.AddSingleton<IDatabaseSettings> (sp =>
                 sp.GetRequiredService<IOptions<DatabaseSettings>> ().Value);
 
-            services.AddSingleton<ContatoService> ();
             services.AddSingleton<LinkedListService> ();
 
             services.AddControllers ()

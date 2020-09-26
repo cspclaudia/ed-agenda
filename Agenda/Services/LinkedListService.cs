@@ -27,7 +27,7 @@ namespace Agenda.Services
         public void Add (Contato contato)
         {
             var newNode = new Node (contato);
-            newNode.next = lista.Head;
+            newNode.Next = lista.Head;
             lista.Head = newNode;
 
             _linkedList.InsertOne (lista);

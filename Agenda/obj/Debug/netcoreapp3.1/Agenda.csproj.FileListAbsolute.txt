@@ -32,9 +32,6 @@ C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.TagHelpers.input.cache
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.TagHelpers.output.cache
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.RazorCoreGenerate.cache
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Contato\Create.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Contato\Remove.cshtml.g.cs
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Contato\Update.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -50,7 +47,6 @@ C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\staticw
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.dll
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.pdb
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Agenda.genruntimeconfig.cache
-C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\Contato\Index.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Create.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Index.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Remove.cshtml.g.cs
