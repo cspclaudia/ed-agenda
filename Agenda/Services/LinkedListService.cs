@@ -18,46 +18,75 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<Node> (settings.LinkedListCollectionName);
         }
 
-        // public LinkedListService ()
-        // {
-        //     lista.Head = null;
-        // }
         private LinkedList lista = new LinkedList ();
-        public void Add (Contato contato)
+        public Node Add (Contato contato)
         {
             var newNode = new Node (contato);
             newNode.Next = lista.Head;
             lista.Head = newNode;
 
-            _linkedList.InsertOne (newNode);
+            try
+            {
+                _linkedList.InsertOne (newNode);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine (e);
+            }
+            return newNode;
+        }
+
+        public Node Find (string id)
+        {
+            Node aux = lista.Head;
+            while ((aux != null) && (aux.Id != id))
+            {
+                aux = aux.Next;
+            }
+            return aux;
         }
 
         public List<Node> Get () =>
-            _linkedList.Find (linkedList => true).ToList ();
+            _linkedList.Find (node => true).ToList ();
 
-        // public LinkedList Get (string id) =>
-        //     _linkedList.Find<LinkedList> (linkedList => linkedList.Id == id).FirstOrDefault ();
+        public bool IsEmpty ()
+        {
+            return (lista.Head == null);
+        }
 
-        // public LinkedList Create (LinkedList linkedList)
+        // public void Remove (string id)
         // {
-        //     try
+        //     if (this.IsEmpty ())
         //     {
-        //         _linkedList.InsertOne (linkedList);
+        //         return;
         //     }
-        //     catch (Exception e)
+        //     Node aux = lista.Head;
+        //     Node ant = null;
+        //     while ((aux != null) && (aux.Id != id))
         //     {
-        //         Console.WriteLine (e);
+        //         ant = aux;
+        //         aux = aux.Next;
         //     }
-        //     return linkedList;
+        //     if (ant == null) //remover primeiro NÓ
+        //     {
+        //         lista.Head = aux.Next;
+        //     }
+        //     else
+        //     {
+        //         ant.Next = aux.Next;
+        //     }
         // }
 
-        // public void Update (string id, LinkedList linkedListIn) =>
-        //     _linkedList.ReplaceOne (linkedList => linkedList.Id == id, linkedListIn);
+        public Node Get (string id) =>
+            _linkedList.Find<Node> (node => node.Id == id).FirstOrDefault ();
 
-        // public void Remove (LinkedList linkedListIn) =>
-        //     _linkedList.DeleteOne (linkedList => linkedList.Id == linkedListIn.Id);
+        public void Update (string id, Node node) =>
+            _linkedList.ReplaceOne (node => node.Id == id, node);
 
-        // public void Remove (string id) =>
-        //     _linkedList.DeleteOne (linkedList => linkedList.Id == id);
+        public void Remove (Node nodeIn) =>
+            _linkedList.DeleteOne (node => node.Id == nodeIn.Id);
+
+        public void Remove (string id) =>
+            _linkedList.DeleteOne (node => node.Id == id);
     }
 }
