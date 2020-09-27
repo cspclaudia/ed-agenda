@@ -14397,13 +14397,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Update.cshtml",
+      "TargetPath": "Views\\LinkedList\\Update.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Book\\Remove.cshtml",
-      "TargetPath": "Views\\Book\\Remove.cshtml",
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14412,8 +14412,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Remove.cshtml",
-      "TargetPath": "Views\\Contato\\Remove.cshtml",
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Create.cshtml",
+      "TargetPath": "Views\\LinkedList\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14422,18 +14422,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Create.cshtml",
-      "TargetPath": "Views\\Contato\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Index.cshtml",
-      "TargetPath": "Views\\Contato\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Contato\\Update.cshtml",
-      "TargetPath": "Views\\Contato\\Update.cshtml",
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Remove.cshtml",
+      "TargetPath": "Views\\LinkedList\\Remove.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14442,23 +14432,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Book\\Index.cshtml",
-      "TargetPath": "Views\\Book\\Index.cshtml",
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Index.cshtml",
+      "TargetPath": "Views\\LinkedList\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
       "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Book\\Update.cshtml",
-      "TargetPath": "Views\\Book\\Update.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\Book\\Create.cshtml",
-      "TargetPath": "Views\\Book\\Create.cshtml",
       "FileKind": "mvc"
     }
   ],

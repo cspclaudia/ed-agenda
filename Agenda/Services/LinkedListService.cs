@@ -49,42 +49,42 @@ namespace Agenda.Services
         public List<Node> Get () =>
             _linkedList.Find (node => true).ToList ();
 
-        public bool IsEmpty ()
-        {
-            return (lista.Head == null);
-        }
-
-        // public void Remove (string id)
-        // {
-        //     if (this.IsEmpty ())
-        //     {
-        //         return;
-        //     }
-        //     Node aux = lista.Head;
-        //     Node ant = null;
-        //     while ((aux != null) && (aux.Id != id))
-        //     {
-        //         ant = aux;
-        //         aux = aux.Next;
-        //     }
-        //     if (ant == null) //remover primeiro NÓ
-        //     {
-        //         lista.Head = aux.Next;
-        //     }
-        //     else
-        //     {
-        //         ant.Next = aux.Next;
-        //     }
-        // }
-
         public Node Get (string id) =>
             _linkedList.Find<Node> (node => node.Id == id).FirstOrDefault ();
 
         public void Update (string id, Node node) =>
             _linkedList.ReplaceOne (node => node.Id == id, node);
 
-        public void Remove (Node nodeIn) =>
-            _linkedList.DeleteOne (node => node.Id == nodeIn.Id);
+        public bool IsEmpty ()
+        {
+            return (lista.Head == null);
+        }
+
+        public void Delete (Node node)
+        {
+            if (this.IsEmpty ())
+            {
+                return;
+            }
+            Node aux = lista.Head;
+            Node ant = null;
+            while ((aux != null) && (aux.Id != node.Id))
+            {
+                ant = aux;
+                aux = aux.Next;
+            }
+            if (ant == null)
+            {
+                lista.Head = aux.Next;
+                _linkedList.ReplaceOne (n => n.Next.Id == node.Id, aux);
+            }
+            else
+            {
+                ant.Next = aux.Next;
+                _linkedList.ReplaceOne (n => n.Next.Id == node.Id, ant);
+            }
+            _linkedList.DeleteOne (n => n.Id == node.Id);
+        }
 
         public void Remove (string id) =>
             _linkedList.DeleteOne (node => node.Id == id);

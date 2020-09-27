@@ -73,14 +73,14 @@ namespace Agenda.Controllers
         [HttpPost]
         public IActionResult Remove (string id, Contato contato)
         {
-            var node = _linkedListService.Get (id);
+            var node = _linkedListService.Find (id);
 
             if (node == null)
             {
                 return NotFound ();
             }
 
-            _linkedListService.Remove (node.Id);
+            _linkedListService.Delete (node);
 
             return RedirectToAction("Index");
         }
