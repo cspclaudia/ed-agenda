@@ -36,29 +36,38 @@ namespace Agenda.Services
             return newNode;
         }
 
-        public Node Find (string id)
-        {
-            Node aux = lista.Head;
-            while ((aux != null) && (aux.Id != id))
-            {
-                aux = aux.Next;
-            }
-            return aux;
-        }
-
         public List<Node> Get () =>
             _linkedList.Find (node => true).ToList ();
 
-        public Node Get (string id) =>
-            _linkedList.Find<Node> (node => node.Id == id).FirstOrDefault ();
+        // public Node Get (string id) =>
+        //     _linkedList.Find<Node> (node => node.Id == id).FirstOrDefault ();
 
-        public void Update (string id, Node node) =>
-            _linkedList.ReplaceOne (node => node.Id == id, node);
-
-        public bool IsEmpty ()
+        public Node Find (string id)
         {
-            return (lista.Head == null);
+            Node node = lista.Head;
+            while ((node != null) && (node.Id != id))
+            {
+                node = node.Next;
+            }
+            return node;
         }
+
+        // public void Update (string id, Node node) =>
+        //     _linkedList.ReplaceOne (node => node.Id == id, node);
+
+        public void Edit (string id, Contato contato)
+        {
+            if (this.IsEmpty ())
+            {
+                return;
+            }
+            Node node = Find(id);
+            node.Contato = contato;
+            _linkedList.ReplaceOne (n => n.Id == id, node);
+        }
+
+        // public void Remove (string id) =>
+        //     _linkedList.DeleteOne (node => node.Id == id);
 
         public void Delete (Node node)
         {
@@ -86,7 +95,9 @@ namespace Agenda.Services
             _linkedList.DeleteOne (n => n.Id == node.Id);
         }
 
-        public void Remove (string id) =>
-            _linkedList.DeleteOne (node => node.Id == id);
+        public bool IsEmpty ()
+        {
+            return (lista.Head == null);
+        }
     }
 }

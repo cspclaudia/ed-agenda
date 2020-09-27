@@ -22,22 +22,22 @@ namespace Agenda.Controllers
         // [AllowAnonymous]
         public ActionResult<Node> Index () => View (_linkedListService.Get ());
 
-        [HttpGet]
-        public ActionResult<List<Node>> Get () =>
-            _linkedListService.Get ();
+        // [HttpGet]
+        // public ActionResult<List<Node>> Get () =>
+        //     _linkedListService.Get ();
 
-        [HttpGet]
-        public ActionResult<Node> Get (string id)
-        {
-            var node = _linkedListService.Find (id);
+        // [HttpGet]
+        // public ActionResult<Node> Get (string id)
+        // {
+        //     var node = _linkedListService.Find (id);
 
-            if (node == null)
-            {
-                return NotFound ();
-            }
+        //     if (node == null)
+        //     {
+        //         return NotFound ();
+        //     }
 
-            return node;
-        }
+        //     return node;
+        // }
 
         [HttpGet]
         public ActionResult Create () => View ();
@@ -50,35 +50,35 @@ namespace Agenda.Controllers
         }
 
         [HttpGet]
-        public ActionResult Update (string id) => View (_linkedListService.Get (id));
+        public ActionResult Update (string id) => View (_linkedListService.Find (id));
 
         [HttpPost]
-        public IActionResult Update (string id, Node node)
+        public IActionResult Edit (string id, Contato contato)
         {
-            var linkedList = _linkedListService.Get (id);
+            // var linkedList = _linkedListService.Find (id);
 
-            if (linkedList == null)
-            {
-                return NotFound ();
-            }
+            // if (linkedList == null)
+            // {
+            //     return NotFound ();
+            // }
 
-            _linkedListService.Update (id, node);
+            _linkedListService.Edit (id, contato);
 
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult Remove (string id) => View (_linkedListService.Get (id));
+        public ActionResult Remove (string id) => View (_linkedListService.Find (id));
 
         [HttpPost]
-        public IActionResult Remove (string id, Contato contato)
+        public IActionResult Delete (Node node)
         {
-            var node = _linkedListService.Find (id);
+            // var node = _linkedListService.Find (id);
 
-            if (node == null)
-            {
-                return NotFound ();
-            }
+            // if (node == null)
+            // {
+            //     return NotFound ();
+            // }
 
             _linkedListService.Delete (node);
 

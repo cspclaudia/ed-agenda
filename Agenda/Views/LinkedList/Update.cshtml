@@ -1,7 +1,7 @@
 @model Agenda.Models.Node
 
 @{
-    ViewData["Title"] = "Update";
+    ViewData["Title"] = "Editar";
 }
 
 <h1>Editar</h1>
@@ -10,9 +10,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Update">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @* <input type="hidden" asp-for="Id" /> *@
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Contato.Nome" class="control-label"></label>
                 <input asp-for="Contato.Nome" class="form-control" />
