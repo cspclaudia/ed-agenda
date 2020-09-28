@@ -46,6 +46,9 @@ namespace Agenda.Services
         public LinkedList Find ()
         {
             LinkedList lista = _linkedList.Find (node => true).FirstOrDefault ();
+            if (lista == null){
+                lista = new LinkedList();
+            }
             return lista;
         }
 
