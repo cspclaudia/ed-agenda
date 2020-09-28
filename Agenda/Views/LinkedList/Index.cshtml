@@ -1,4 +1,4 @@
-@model IEnumerable<Agenda.Models.Node>
+@model Agenda.Models.LinkedList
 
 @{
     ViewData["Title"] = "Contatos";
@@ -16,31 +16,36 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contato)
+                @Html.DisplayNameFor(model => model.Head.Contato)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Next)
+                @Html.DisplayNameFor(model => model.Head.Next)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@* @foreach (var item in Model) { *@
+    @{ var aux = Model.Head; }
+    @while(aux != null) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => aux.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contato)
+                @Html.DisplayFor(modelItem => aux.Contato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Next)
+                @Html.DisplayFor(modelItem => aux.Next)
             </td>
             <td>
-                <a asp-action="Update" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Remove" asp-route-id="@item.Id">Excluir</a>
+                <a asp-action="Update" asp-route-id="@aux.Id">Editar</a> |
+                <a asp-action="Remove" asp-route-id="@aux.Id">Excluir</a>
             </td>
         </tr>
-}
+        aux = aux.Next;
+    }
+@* } *@
     </tbody>
 </table>
+

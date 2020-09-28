@@ -49,16 +49,11 @@ namespace Agenda.Services
         public List<Node> Get () =>
             _node.Find (node => true).ToList ();
 
-        // public LinkedList Find ()
-        // {
-        //     LinkedList nodes = new LinkedList();
-        //     var nodes = _node.Find (node => true).ToList ();
-        //     while (lista != null)
-        //     {
-        //          = node.Next;
-        //     }
-        //     return nodes;
-        // }
+        public LinkedList Find ()
+        {
+            LinkedList lista = _linkedList.Find (node => true).FirstOrDefault ();
+            return lista;
+        }
 
         // public Node Get (string id) =>
         //     _node.Find<Node> (node => node.Id == id).FirstOrDefault ();
@@ -79,13 +74,21 @@ namespace Agenda.Services
 
         public void Edit (string id, Contato contato)
         {
-            if (this.IsEmpty ())
+            // if (this.IsEmpty ())
+            // {
+            //     return;
+            // }
+            // Node node = Find (id);
+            LinkedList lista = _linkedList.Find (head => true).First ();
+            Node node = lista.Head;
+            while ((node != null) && (node.Id != id))
             {
-                return;
+                node = node.Next;
             }
-            Node node = Find (id);
             node.Contato = contato;
             _node.ReplaceOne (node => node.Id == id, node);
+            _linkedList.DeleteOne (node => true);
+            _linkedList.InsertOne (lista);
         }
 
         // public void Remove (string id) =>
