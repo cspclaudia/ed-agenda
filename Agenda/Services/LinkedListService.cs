@@ -8,26 +8,36 @@ namespace Agenda.Services
 {
     public class LinkedListService
     {
-        private readonly IMongoCollection<Node> _linkedList;
+        private readonly IMongoCollection<Node> _node;
+        private readonly IMongoCollection<LinkedList> _linkedList;
 
         public LinkedListService (IDatabaseSettings settings)
         {
             var client = new MongoClient (settings.ConnectionString);
             var database = client.GetDatabase (settings.DatabaseName);
 
-            _linkedList = database.GetCollection<Node> (settings.LinkedListCollectionName);
+            _node = database.GetCollection<Node> (settings.NodeCollectionName);
+            _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
-        private LinkedList lista = new LinkedList ();
+        LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
         {
-            var newNode = new Node (contato);
+            var filter = Builders<LinkedList>.Filter.Exists ("item", false);
+            var result = _linkedList.Find (filter).ToList ();
+            if (result.Count != 0)
+            {
+                lista = _linkedList.Find (head => true).First ();
+            }
+            Node newNode = new Node (contato);
             newNode.Next = lista.Head;
             lista.Head = newNode;
 
             try
             {
-                _linkedList.InsertOne (newNode);
+                _node.InsertOne (newNode);
+                _linkedList.DeleteOne (node => true);
+                _linkedList.InsertOne (lista);
             }
             catch (Exception e)
             {
@@ -37,13 +47,25 @@ namespace Agenda.Services
         }
 
         public List<Node> Get () =>
-            _linkedList.Find (node => true).ToList ();
+            _node.Find (node => true).ToList ();
+
+        // public LinkedList Find ()
+        // {
+        //     LinkedList nodes = new LinkedList();
+        //     var nodes = _node.Find (node => true).ToList ();
+        //     while (lista != null)
+        //     {
+        //          = node.Next;
+        //     }
+        //     return nodes;
+        // }
 
         // public Node Get (string id) =>
-        //     _linkedList.Find<Node> (node => node.Id == id).FirstOrDefault ();
+        //     _node.Find<Node> (node => node.Id == id).FirstOrDefault ();
 
         public Node Find (string id)
         {
+            LinkedList lista = _linkedList.Find (head => true).First ();
             Node node = lista.Head;
             while ((node != null) && (node.Id != id))
             {
@@ -53,7 +75,7 @@ namespace Agenda.Services
         }
 
         // public void Update (string id, Node node) =>
-        //     _linkedList.ReplaceOne (node => node.Id == id, node);
+        //     _node.ReplaceOne (node => node.Id == id, node);
 
         public void Edit (string id, Contato contato)
         {
@@ -61,16 +83,17 @@ namespace Agenda.Services
             {
                 return;
             }
-            Node node = Find(id);
+            Node node = Find (id);
             node.Contato = contato;
-            _linkedList.ReplaceOne (n => n.Id == id, node);
+            _node.ReplaceOne (node => node.Id == id, node);
         }
 
         // public void Remove (string id) =>
-        //     _linkedList.DeleteOne (node => node.Id == id);
+        //     _node.DeleteOne (node => node.Id == id);
 
         public void Delete (Node node)
         {
+            LinkedList lista = _linkedList.Find (head => true).First ();
             if (this.IsEmpty ())
             {
                 return;
@@ -85,14 +108,14 @@ namespace Agenda.Services
             if (ant == null)
             {
                 lista.Head = aux.Next;
-                _linkedList.ReplaceOne (n => n.Next.Id == node.Id, aux);
+                _node.ReplaceOne (n => n.Next.Id == node.Id, aux);
             }
             else
             {
                 ant.Next = aux.Next;
-                _linkedList.ReplaceOne (n => n.Next.Id == node.Id, ant);
+                _node.ReplaceOne (n => n.Next.Id == node.Id, ant);
             }
-            _linkedList.DeleteOne (n => n.Id == node.Id);
+            _node.DeleteOne (n => n.Id == node.Id);
         }
 
         public bool IsEmpty ()
