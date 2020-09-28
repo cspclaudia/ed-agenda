@@ -29,25 +29,19 @@ namespace Agenda.Services
             {
                 lista = _linkedList.Find (head => true).First ();
             }
-            Node newNode = new Node (contato);
-            newNode.Next = lista.Head;
-            lista.Head = newNode;
+            Node node = new Node (contato);
+            node.Next = lista.Head;
+            lista.Head = node;
 
-            try
-            {
-                _node.InsertOne (newNode);
-                _linkedList.DeleteOne (node => true);
-                _linkedList.InsertOne (lista);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine (e);
-            }
-            return newNode;
+            _node.InsertOne (node);
+            _linkedList.DeleteOne (node => true);
+            _linkedList.InsertOne (lista);
+
+            return node;
         }
 
-        public List<Node> Get () =>
-            _node.Find (node => true).ToList ();
+        // public List<Node> Get () =>
+        //     _node.Find (node => true).ToList ();
 
         public LinkedList Find ()
         {
@@ -74,11 +68,6 @@ namespace Agenda.Services
 
         public void Edit (string id, Contato contato)
         {
-            // if (this.IsEmpty ())
-            // {
-            //     return;
-            // }
-            // Node node = Find (id);
             LinkedList lista = _linkedList.Find (head => true).First ();
             Node node = lista.Head;
             while ((node != null) && (node.Id != id))
@@ -97,10 +86,6 @@ namespace Agenda.Services
         public void Delete (Node node)
         {
             LinkedList lista = _linkedList.Find (head => true).First ();
-            if (this.IsEmpty ())
-            {
-                return;
-            }
             Node aux = lista.Head;
             Node ant = null;
             while ((aux != null) && (aux.Id != node.Id))
@@ -121,11 +106,6 @@ namespace Agenda.Services
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
             _node.DeleteOne (n => n.Id == node.Id);
-        }
-
-        public bool IsEmpty ()
-        {
-            return (lista.Head == null);
         }
     }
 }

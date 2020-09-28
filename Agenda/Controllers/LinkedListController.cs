@@ -55,12 +55,12 @@ namespace Agenda.Controllers
         [HttpPost]
         public IActionResult Edit (string id, Contato contato)
         {
-            // var linkedList = _linkedListService.Find (id);
+            var linkedList = _linkedListService.Find (id);
 
-            // if (linkedList == null)
-            // {
-            //     return NotFound ();
-            // }
+            if (linkedList == null)
+            {
+                return NotFound ();
+            }
 
             _linkedListService.Edit (id, contato);
 
@@ -71,14 +71,14 @@ namespace Agenda.Controllers
         public ActionResult Remove (string id) => View (_linkedListService.Find (id));
 
         [HttpPost]
-        public IActionResult Delete (Node node)
+        public IActionResult Delete (string id, Node node)
         {
-            // var node = _linkedListService.Find (id);
+            var nodeIn = _linkedListService.Find (id);
 
-            // if (node == null)
-            // {
-            //     return NotFound ();
-            // }
+            if (nodeIn == null)
+            {
+                return NotFound ();
+            }
 
             _linkedListService.Delete (node);
 
