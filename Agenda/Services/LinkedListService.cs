@@ -115,6 +115,8 @@ namespace Agenda.Services
                 ant.Next = aux.Next;
                 _node.ReplaceOne (n => n.Next.Id == node.Id, ant);
             }
+            _linkedList.DeleteOne (node => true);
+            _linkedList.InsertOne (lista);
             _node.DeleteOne (n => n.Id == node.Id);
         }
 
