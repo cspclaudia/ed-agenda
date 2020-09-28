@@ -46,8 +46,9 @@ namespace Agenda.Services
         public LinkedList Find ()
         {
             LinkedList lista = _linkedList.Find (node => true).FirstOrDefault ();
-            if (lista == null){
-                lista = new LinkedList();
+            if (lista == null)
+            {
+                lista = new LinkedList ();
             }
             return lista;
         }
@@ -109,6 +110,36 @@ namespace Agenda.Services
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
             _node.DeleteOne (n => n.Id == node.Id);
+        }
+
+        public LinkedList SortName ()
+        {
+            LinkedList lista = _linkedList.Find (head => true).FirstOrDefault ();
+            Node node = lista.Head;
+            Contato aux = null;
+            int count = 0;
+            while (node != null)
+            {
+                count++;
+                node = node.Next;
+            }
+            node = lista.Head;
+            for (var i = 0; i < count; i++)
+            {
+                do
+                {
+                    if (node.Next.Contato.Nome.CompareTo (node.Contato.Nome) < 0)
+                    {
+                        aux = node.Contato;
+                        node.Contato = node.Next.Contato;
+                        node.Next.Contato = aux;
+                    }
+                    node = node.Next;
+                }
+                while (node.Next != null);
+                node = lista.Head;
+            }
+            return lista;
         }
     }
 }

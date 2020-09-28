@@ -20,7 +20,7 @@ namespace Agenda.Controllers
         }
 
         // [AllowAnonymous]
-        public ActionResult<LinkedList> Index () => View (_linkedListService.Find ());
+        public ActionResult<LinkedList> Index () => View (_linkedListService.SortName ());
 
         // [HttpGet]
         // public ActionResult<List<Node>> Get () =>
