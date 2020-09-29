@@ -4,17 +4,12 @@
     ViewData["Title"] = "Contatos";
 }
 
-<h1>Contatos</h1>
+<h1>Contatos ordenados por Nome</h1>
 
 <p>
-    <a asp-action="Create">Inserir Contato</a>
+    <a asp-action="Index">Voltar</a>
 </p>
-<p>
-    <a asp-action="SortName">Ordenar por Nome</a>
-</p>
-<p>
-    <a asp-action="SortEmail">Ordenar por Email</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -31,7 +26,6 @@
         </tr>
     </thead>
     <tbody>
-@* @foreach (var item in Model) { *@
     @{ var aux = Model.Head; }
     @while(aux != null) {
         <tr>
@@ -44,14 +38,9 @@
             <td>
                 @Html.DisplayFor(modelItem => aux.Next)
             </td>
-            <td>
-                <a asp-action="Update" asp-route-id="@aux.Id">Editar</a> |
-                <a asp-action="Remove" asp-route-id="@aux.Id">Excluir</a>
-            </td>
         </tr>
         aux = aux.Next;
     }
-@* } *@
     </tbody>
 </table>
 

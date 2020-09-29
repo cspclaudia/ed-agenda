@@ -14417,6 +14417,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\SortName.cshtml",
+      "TargetPath": "Views\\LinkedList\\SortName.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14434,6 +14439,11 @@
     {
       "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Index.cshtml",
       "TargetPath": "Views\\LinkedList\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\SortEmail.cshtml",
+      "TargetPath": "Views\\LinkedList\\SortEmail.cshtml",
       "FileKind": "mvc"
     },
     {
