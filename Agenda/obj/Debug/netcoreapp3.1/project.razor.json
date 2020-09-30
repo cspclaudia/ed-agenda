@@ -14427,6 +14427,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Navigation.cshtml",
+      "TargetPath": "Views\\LinkedList\\Navigation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\cspcl\\Documents\\GitHub\\ed-agenda\\Agenda\\Views\\LinkedList\\Remove.cshtml",
       "TargetPath": "Views\\LinkedList\\Remove.cshtml",
       "FileKind": "mvc"

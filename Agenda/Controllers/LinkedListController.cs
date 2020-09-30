@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using Agenda.Models;
 using Agenda.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Controllers
@@ -25,6 +19,8 @@ namespace Agenda.Controllers
         public ActionResult<LinkedList> SortName () => View (_linkedListService.SortName ());
 
         public ActionResult<LinkedList> SortEmail () => View (_linkedListService.SortEmail ());
+
+        public ActionResult<Node> Navigation (string id) => View (_linkedListService.Navigation (id));
 
         // [HttpGet]
         // public ActionResult<List<Node>> Get () =>
@@ -50,7 +46,7 @@ namespace Agenda.Controllers
         public ActionResult<Node> Create (Contato contato)
         {
             _linkedListService.Add (contato);
-            return RedirectToAction("Index");
+            return RedirectToAction ("Index");
         }
 
         [HttpGet]
@@ -68,7 +64,7 @@ namespace Agenda.Controllers
 
             _linkedListService.Edit (id, contato);
 
-            return RedirectToAction("Index");
+            return RedirectToAction ("Index");
         }
 
         [HttpGet]
@@ -86,7 +82,7 @@ namespace Agenda.Controllers
 
             _linkedListService.Delete (node);
 
-            return RedirectToAction("Index");
+            return RedirectToAction ("Index");
         }
     }
 }

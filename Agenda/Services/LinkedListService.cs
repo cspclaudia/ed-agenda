@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Agenda.Models;
 using MongoDB.Driver;
@@ -114,7 +112,12 @@ namespace Agenda.Services
 
         public LinkedList SortName ()
         {
-            LinkedList lista = _linkedList.Find (head => true).FirstOrDefault ();
+            var filter = Builders<LinkedList>.Filter.Exists ("item", false);
+            var result = _linkedList.Find (filter).ToList ();
+            if (result.Count != 0)
+            {
+                lista = _linkedList.Find (head => true).First ();
+            }
             Node node = lista.Head;
             Contato aux = null;
             int count = 0;
@@ -144,7 +147,12 @@ namespace Agenda.Services
 
         public LinkedList SortEmail ()
         {
-            LinkedList lista = _linkedList.Find (head => true).FirstOrDefault ();
+            var filter = Builders<LinkedList>.Filter.Exists ("item", false);
+            var result = _linkedList.Find (filter).ToList ();
+            if (result.Count != 0)
+            {
+                lista = _linkedList.Find (head => true).First ();
+            }
             Node node = lista.Head;
             Contato aux = null;
             int count = 0;
@@ -170,6 +178,30 @@ namespace Agenda.Services
                 node = lista.Head;
             }
             return lista;
+        }
+
+        public Node Navigation (string id)
+        {
+            var filter = Builders<LinkedList>.Filter.Exists ("item", false);
+            var result = _linkedList.Find (filter).ToList ();
+            if (result.Count != 0)
+            {
+                lista = _linkedList.Find (head => true).First ();
+            }
+            Node node = lista.Head;
+            if (lista.Id != id)
+            {
+                while ((node.Next != null) && (node.Id != id))
+                {
+                    node = node.Next;
+                }
+                if (node.Next == null)
+                {
+                    return node = lista.Head;
+                }
+                node = node.Next;
+            }
+            return node;
         }
     }
 }

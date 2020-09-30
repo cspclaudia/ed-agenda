@@ -1,0 +1,72 @@
+@model Agenda.Models.Node
+
+@{
+    ViewData["Title"] = "Contatos";
+}
+
+<h1>Navegando pelos Contatos</h1>
+
+<p>
+    <a asp-action="Index">Voltar</a>
+</p>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contato.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contato.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contato.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Next)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @{ var aux = Model; }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Contato.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Contato.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Contato.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Next)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Next</a>
+
+@* <input id="seta"/> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    //    const inputEle = document.getElementById('seta');
+    //    inputEle.addEventListener('keydown', function(e){
+    //    var key = e.which || e.keyCode;
+    //    if (key == 39) { // codigo da tecla seta para direita
+    //        // colocar aqui a função
+    //        alert('carregou');
+    //    }
+    //    });
+    </script>
+}

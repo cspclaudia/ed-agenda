@@ -6,15 +6,13 @@
 
 <h1>Contatos</h1>
 
-<p>
-    <a asp-action="Create">Inserir Contato</a>
-</p>
-<p>
-    <a asp-action="SortName">Ordenar por Nome</a>
-</p>
-<p>
-    <a asp-action="SortEmail">Ordenar por Email</a>
-</p>
+<div class="row">
+    <p class="col-md-3"><a asp-action="Create">Inserir Contato</a></p>
+    <p class="col-md-3"><a asp-action="SortName">Ordenar por Nome</a></p>
+    <p class="col-md-3"><a asp-action="SortEmail">Ordenar por Email</a></p>
+    <p class="col-md-3"><a asp-action="Navigation" asp-route-id="@Model.Id">Navegar pelos Contatos</a></p>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -31,7 +29,6 @@
         </tr>
     </thead>
     <tbody>
-@* @foreach (var item in Model) { *@
     @{ var aux = Model.Head; }
     @while(aux != null) {
         <tr>
@@ -51,7 +48,5 @@
         </tr>
         aux = aux.Next;
     }
-@* } *@
     </tbody>
 </table>
-

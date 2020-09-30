@@ -53,3 +53,4 @@ C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\V
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Update.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\SortEmail.cshtml.g.cs
 C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\SortName.cshtml.g.cs
+C:\Users\cspcl\Documents\GitHub\ed-agenda\Agenda\obj\Debug\netcoreapp3.1\Razor\Views\LinkedList\Navigation.cshtml.g.cs
