@@ -18,6 +18,8 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
+        // --- não consegui salvar no banco quando a lista é circular e/ou duplamente encadeada ---
+
         LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
         {
@@ -29,7 +31,30 @@ namespace Agenda.Services
             }
             Node node = new Node (contato);
             node.Next = lista.Head;
+            // ------- Duplamente Encadeada -------
+            // node.Before = null;
+            // if (lista.Head != null)
+            // {
+            //     lista.Head.Before = node;
+            // }
             lista.Head = node;
+            // ------- Circular -------
+            // Node aux = lista.Head;
+            // var node = new Node (contato);
+            // if (lista.Head != null)
+            // {
+            //     while (aux.Next != lista.Head)
+            //     {
+            //         aux = aux.Next;
+            //     }
+            // }
+            // else
+            // {
+            //     aux = node;
+            // }
+            // node.Next = lista.Head;
+            // lista.Head = node;
+            // aux.Next = lista.Head;
 
             _node.InsertOne (node);
             _linkedList.DeleteOne (node => true);
@@ -37,9 +62,6 @@ namespace Agenda.Services
 
             return node;
         }
-
-        // public List<Node> Get () =>
-        //     _node.Find (node => true).ToList ();
 
         public LinkedList Find ()
         {
@@ -51,9 +73,6 @@ namespace Agenda.Services
             return lista;
         }
 
-        // public Node Get (string id) =>
-        //     _node.Find<Node> (node => node.Id == id).FirstOrDefault ();
-
         public Node Find (string id)
         {
             LinkedList lista = _linkedList.Find (head => true).First ();
@@ -64,9 +83,6 @@ namespace Agenda.Services
             }
             return node;
         }
-
-        // public void Update (string id, Node node) =>
-        //     _node.ReplaceOne (node => node.Id == id, node);
 
         public void Edit (string id, Contato contato)
         {
@@ -81,9 +97,6 @@ namespace Agenda.Services
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
         }
-
-        // public void Remove (string id) =>
-        //     _node.DeleteOne (node => node.Id == id);
 
         public void Delete (Node node)
         {

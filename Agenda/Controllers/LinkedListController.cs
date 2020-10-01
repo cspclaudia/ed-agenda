@@ -13,7 +13,6 @@ namespace Agenda.Controllers
             _linkedListService = linkedListService;
         }
 
-        // [AllowAnonymous]
         public ActionResult<LinkedList> Index () => View (_linkedListService.Find ());
 
         public ActionResult<LinkedList> SortName () => View (_linkedListService.SortName ());
@@ -21,23 +20,6 @@ namespace Agenda.Controllers
         public ActionResult<LinkedList> SortEmail () => View (_linkedListService.SortEmail ());
 
         public ActionResult<Node> Navigation (string id) => View (_linkedListService.Navigation (id));
-
-        // [HttpGet]
-        // public ActionResult<List<Node>> Get () =>
-        //     _linkedListService.Get ();
-
-        // [HttpGet]
-        // public ActionResult<Node> Get (string id)
-        // {
-        //     var node = _linkedListService.Find (id);
-
-        //     if (node == null)
-        //     {
-        //         return NotFound ();
-        //     }
-
-        //     return node;
-        // }
 
         [HttpGet]
         public ActionResult Create () => View ();

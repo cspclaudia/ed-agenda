@@ -8,9 +8,11 @@
 
 <div class="row">
     <p class="col-md-3"><a asp-action="Create">Inserir Contato</a></p>
-    <p class="col-md-3"><a asp-action="SortName">Ordenar por Nome</a></p>
-    <p class="col-md-3"><a asp-action="SortEmail">Ordenar por Email</a></p>
-    <p class="col-md-3"><a asp-action="Navigation" asp-route-id="@Model.Id">Navegar pelos Contatos</a></p>
+    @if(Model.Head != null && Model.Head.Next != null){
+        <p class="col-md-3"><a asp-action="SortName">Ordenar por Nome</a></p>
+        <p class="col-md-3"><a asp-action="SortEmail">Ordenar por Email</a></p>
+        <p class="col-md-3" id="teste"><a asp-action="Navigation" asp-route-id="@Model.Id">Navegar pelos Contatos</a></p>
+    }
 </div>
 
 <table class="table">
