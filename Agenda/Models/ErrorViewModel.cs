@@ -1,5 +1,3 @@
-using System;
-
 namespace Agenda.Models
 {
     public class ErrorViewModel

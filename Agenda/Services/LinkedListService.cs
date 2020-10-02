@@ -18,7 +18,7 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
-        // --- não consegui salvar no banco quando a lista é circular e/ou duplamente encadeada ---
+        // --- não consegui salvar no mongo quando a lista é circular e/ou duplamente encadeada ---
 
         LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
