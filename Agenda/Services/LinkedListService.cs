@@ -18,7 +18,7 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
-        // --- não consegui salvar no mongo quando a lista é circular e/ou duplamente encadeada ---
+        // --- não consegui salvar no mongo quando a lista é circular ---
 
         LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
@@ -43,7 +43,6 @@ namespace Agenda.Services
             {
                 _node.InsertOne(node);
             }
-            
             lista.Head = node;
             
             // ------- Circular -------
@@ -110,22 +109,33 @@ namespace Agenda.Services
             LinkedList lista = _linkedList.Find (head => true).First ();
             Node aux = lista.Head;
             Node ant = null;
+            Node pos = aux.Next;
             while ((aux != null) && (aux.Id != node.Id))
             {
                 ant = aux;
                 aux = aux.Next;
+                pos = aux.Next;
             }
             if (ant == null)
             {
                 lista.Head = aux.Next;
                 _node.ReplaceOne (n => n.Next == node, aux);
+                pos.Before = null;
+                _node.ReplaceOne (n => n.Before == node.Id, pos);
+            }
+            else if (pos == null)
+            {
+                ant.Next = null;
+                _node.ReplaceOne (n => n.Next == node, ant);
             }
             else
             {
                 ant.Next = aux.Next;
                 _node.ReplaceOne (n => n.Next == node, ant);
+                pos.Before = aux.Before;
+                _node.ReplaceOne (n => n.Before == node.Id, pos);
             }
-            _linkedList.DeleteOne (node => true);
+            _linkedList.DeleteOne (lista => true);
             _linkedList.InsertOne (lista);
             _node.DeleteOne (n => n.Id == node.Id);
         }
@@ -151,13 +161,13 @@ namespace Agenda.Services
             {
                 do
                 {
-                    // if (node.Next.Contato.Nome.CompareTo (node.Contato.Nome) < 0)
-                    // {
-                    //     aux = node.Contato;
-                    //     node.Contato = node.Next.Contato;
-                    //     node.Next.Contato = aux;
-                    // }
-                    // node.Id = node.Next;
+                    if (node.Next.Contato.Nome.CompareTo (node.Contato.Nome) < 0)
+                    {
+                        aux = node.Contato;
+                        node.Contato = node.Next.Contato;
+                        node.Next.Contato = aux;
+                    }
+                    node = node.Next;
                 }
                 while (node.Next != null);
                 node = lista.Head;
@@ -186,12 +196,12 @@ namespace Agenda.Services
             {
                 do
                 {
-                    // if (node.Next.Contato.Email.CompareTo (node.Contato.Email) < 0)
-                    // {
-                    //     aux = node.Contato;
-                    //     node.Contato = node.Next.Contato;
-                    //     node.Next.Contato = aux;
-                    // }
+                    if (node.Next.Contato.Email.CompareTo (node.Contato.Email) < 0)
+                    {
+                        aux = node.Contato;
+                        node.Contato = node.Next.Contato;
+                        node.Next.Contato = aux;
+                    }
                     node = node.Next;
                 }
                 while (node.Next != null);
