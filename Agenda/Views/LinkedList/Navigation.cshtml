@@ -17,13 +17,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Contato.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contato.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contato.Telefone)
+                @Html.DisplayNameFor(model => model.Contato)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Before)
@@ -41,13 +35,7 @@
                 @Html.DisplayFor(modelItem => aux.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => aux.Contato.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => aux.Contato.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => aux.Contato.Telefone)
+                @Html.DisplayFor(modelItem => aux.Contato)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => aux.Before)
@@ -60,20 +48,22 @@
 </table>
 
 @* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Anterior</a> *@
-<a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Próximo</a>
+@* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Próximo</a> *@
 
-@* <input id="seta"/> *@
+<input type="hidden" value="@aux.Id" id="next">
+@* <input type="hidden" value="@aux.Before" id="before"> *@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
-    //    const inputEle = document.getElementById('seta');
-    //    inputEle.addEventListener('keydown', function(e){
-    //    var key = e.which || e.keyCode;
-    //    if (key == 39) { // codigo da tecla seta para direita
-    //        // colocar aqui a função
-    //        alert('carregou');
-    //    }
-    //    });
+    document.addEventListener("keydown", keyDown, true);
+        function keyDown(e) {
+            if (e.keyCode == 39) {
+                window.location.href = "/LinkedList/Navigation/" + $('#next').val();
+            }
+            //else if (e.keyCode == 37) {
+            //    window.location.href = "/LinkedList/NavigationBefore/" + $('#before').val();
+            //}
+        }
     </script>
 }

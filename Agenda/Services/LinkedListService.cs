@@ -18,7 +18,7 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
-        // --- não consegui salvar no mongo quando a lista é circular ---
+        // --- não consegui salvar no banco quando a lista é circular, triste ---
 
         LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
@@ -37,14 +37,24 @@ namespace Agenda.Services
                 node.Next = lista.Head;
                 _node.InsertOne(node);
                 aux.Before = node.Id;
-                _node.ReplaceOne(n => n.Id == lista.Head.Id, aux);    
+                _node.ReplaceOne(n => n.Id == lista.Head.Id, aux);
+                // if (lista.Head.Next == null)
+                // {
+                //     lista.Head.Next.Id = node.Id;
+                // }
+                // else
+                // {
+                //     while (aux.Next != lista.Head)
+                //     {
+                //         aux = aux.Next;
+                //     }
+                // }
             }
             else
             {
                 _node.InsertOne(node);
             }
             lista.Head = node;
-            
             // ------- Circular -------
             // Node aux = lista.Head;
             // var node = new Node (contato);
@@ -62,7 +72,6 @@ namespace Agenda.Services
             // node.Next = lista.Head;
             // lista.Head = node;
             // aux.Next = lista.Head;
-
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
 
@@ -120,8 +129,11 @@ namespace Agenda.Services
             {
                 lista.Head = aux.Next;
                 _node.ReplaceOne (n => n.Next == node, aux);
-                pos.Before = null;
-                _node.ReplaceOne (n => n.Before == node.Id, pos);
+                if(pos != null)
+                {
+                    pos.Before = null;
+                    _node.ReplaceOne (n => n.Before == node.Id, pos);
+                }
             }
             else if (pos == null)
             {
