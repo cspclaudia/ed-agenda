@@ -29,15 +29,23 @@ namespace Agenda.Services
             {
                 lista = _linkedList.Find (head => true).First ();
             }
+            Node aux = lista.Head;
             Node node = new Node (contato);
-            node.Next = lista.Head;
             // ------- Duplamente Encadeada -------
-            // node.Before = null;
-            // if (lista.Head != null)
-            // {
-            //     lista.Head.Before = node;
-            // }
+            if (lista.Head != null)
+            {
+                node.Next = lista.Head;
+                _node.InsertOne(node);
+                aux.Before = node.Id;
+                _node.ReplaceOne(n => n.Id == lista.Head.Id, aux);    
+            }
+            else
+            {
+                _node.InsertOne(node);
+            }
+            
             lista.Head = node;
+            
             // ------- Circular -------
             // Node aux = lista.Head;
             // var node = new Node (contato);
@@ -56,7 +64,6 @@ namespace Agenda.Services
             // lista.Head = node;
             // aux.Next = lista.Head;
 
-            _node.InsertOne (node);
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
 
@@ -111,12 +118,12 @@ namespace Agenda.Services
             if (ant == null)
             {
                 lista.Head = aux.Next;
-                _node.ReplaceOne (n => n.Next.Id == node.Id, aux);
+                _node.ReplaceOne (n => n.Next == node, aux);
             }
             else
             {
                 ant.Next = aux.Next;
-                _node.ReplaceOne (n => n.Next.Id == node.Id, ant);
+                _node.ReplaceOne (n => n.Next == node, ant);
             }
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
@@ -144,13 +151,13 @@ namespace Agenda.Services
             {
                 do
                 {
-                    if (node.Next.Contato.Nome.CompareTo (node.Contato.Nome) < 0)
-                    {
-                        aux = node.Contato;
-                        node.Contato = node.Next.Contato;
-                        node.Next.Contato = aux;
-                    }
-                    node = node.Next;
+                    // if (node.Next.Contato.Nome.CompareTo (node.Contato.Nome) < 0)
+                    // {
+                    //     aux = node.Contato;
+                    //     node.Contato = node.Next.Contato;
+                    //     node.Next.Contato = aux;
+                    // }
+                    // node.Id = node.Next;
                 }
                 while (node.Next != null);
                 node = lista.Head;
@@ -179,12 +186,12 @@ namespace Agenda.Services
             {
                 do
                 {
-                    if (node.Next.Contato.Email.CompareTo (node.Contato.Email) < 0)
-                    {
-                        aux = node.Contato;
-                        node.Contato = node.Next.Contato;
-                        node.Next.Contato = aux;
-                    }
+                    // if (node.Next.Contato.Email.CompareTo (node.Contato.Email) < 0)
+                    // {
+                    //     aux = node.Contato;
+                    //     node.Contato = node.Next.Contato;
+                    //     node.Next.Contato = aux;
+                    // }
                     node = node.Next;
                 }
                 while (node.Next != null);

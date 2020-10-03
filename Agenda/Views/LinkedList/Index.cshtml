@@ -25,6 +25,9 @@
                 @Html.DisplayNameFor(model => model.Head.Contato)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Head.Before)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Head.Next)
             </th>
             <th></th>
@@ -41,7 +44,10 @@
                 @Html.DisplayFor(modelItem => aux.Contato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => aux.Next)
+                @Html.DisplayFor(modelItem => aux.Before)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Next.Id)
             </td>
             <td>
                 <a asp-action="Update" asp-route-id="@aux.Id">Editar</a> |

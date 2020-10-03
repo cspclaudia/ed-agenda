@@ -9,14 +9,14 @@ namespace Agenda.Models
         [BsonRepresentation (BsonType.ObjectId)]
         public string Id { get; set; }
         public Contato Contato { get; set; }
-        // public Node Before { get; set; }
+        public string Before { get; set; }
         public Node Next { get; set; }
 
         public Node () { }
         public Node (Contato contato)
         {
             Contato = contato;
-            // Before = null;
+            Before = null;
             Next = null;
         }
     }
