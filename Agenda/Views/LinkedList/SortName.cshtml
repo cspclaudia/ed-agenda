@@ -1,4 +1,4 @@
-@* @model Agenda.Models.LinkedList
+@model Agenda.Models.LinkedList
 
 @{
     ViewData["Title"] = "Contatos";
@@ -20,7 +20,10 @@
                 @Html.DisplayNameFor(model => model.Head.Contato)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Head.Next)
+                @Html.DisplayNameFor(model => model.Head.Before)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Head.Next.Id)
             </th>
             <th></th>
         </tr>
@@ -36,11 +39,14 @@
                 @Html.DisplayFor(modelItem => aux.Contato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => aux.Next)
+                @Html.DisplayFor(modelItem => aux.Before)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Next.Id)
             </td>
         </tr>
         aux = aux.Next;
     }
     </tbody>
 </table>
- *@
+

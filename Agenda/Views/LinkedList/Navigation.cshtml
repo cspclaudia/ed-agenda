@@ -25,9 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Contato.Telefone)
             </th>
-            @* <th>
+            <th>
                 @Html.DisplayNameFor(model => model.Before)
-            </th> *@
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Next)
             </th>
@@ -49,11 +49,11 @@
             <td>
                 @Html.DisplayFor(modelItem => aux.Contato.Telefone)
             </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => aux.Before)
-            </td> *@
             <td>
-                @Html.DisplayFor(modelItem => aux.Next)
+                @Html.DisplayFor(modelItem => aux.Before)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => aux.Next.Id)
             </td>
         </tr>
     </tbody>
