@@ -50,8 +50,8 @@
 @* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Anterior</a> *@
 @* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Próximo</a> *@
 
-<input type="hidden" value="@aux.Id" id="next">
-@* <input type="hidden" value="@aux.Before" id="before"> *@
+<input type="hidden" value="@aux.Next.Id" id="next">
+<input type="hidden" value="@aux.Before" id="before">
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -61,9 +61,9 @@
             if (e.keyCode == 39) {
                 window.location.href = "/LinkedList/Navigation/" + $('#next').val();
             }
-            //else if (e.keyCode == 37) {
-            //    window.location.href = "/LinkedList/NavigationBefore/" + $('#before').val();
-            //}
+            else if (e.keyCode == 37) {
+                window.location.href = "/LinkedList/Navigation/" + $('#before').val();
+            }
         }
     </script>
 }

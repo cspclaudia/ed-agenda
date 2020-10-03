@@ -34,25 +34,37 @@ namespace Agenda.Services
             // ------- Duplamente Encadeada -------
             if (lista.Head != null)
             {
-                node.Next = lista.Head;
-                _node.InsertOne(node);
-                aux.Before = node.Id;
-                _node.ReplaceOne(n => n.Id == lista.Head.Id, aux);
-                // if (lista.Head.Next == null)
-                // {
-                //     lista.Head.Next.Id = node.Id;
-                // }
-                // else
-                // {
-                //     while (aux.Next != lista.Head)
-                //     {
-                //         aux = aux.Next;
-                //     }
-                // }
+                if (aux.Id == aux.Next.Id)
+                {
+                    node.Before = aux.Id;
+                    node.Next = lista.Head;
+                    _node.InsertOne (node);
+                    aux.Before = node.Id;
+                    aux.Next.Id = node.Id;
+                    _node.ReplaceOne (n => n.Id == lista.Head.Id, aux);
+                }
+                else
+                {
+                    while (aux.Next.Id != lista.Head.Id)
+                    {
+                        aux = aux.Next;
+                    }
+                    _node.InsertOne (node);
+                    lista.Head.Before = node.Id;
+                    node.Next = lista.Head;
+                    node.Before = aux.Id;
+                    _node.ReplaceOne (n => n.Id == node.Id, node);
+                    aux.Next.Id = node.Id;
+                    _node.ReplaceOne (n => n.Id == aux.Id, aux);
+                }
             }
             else
             {
-                _node.InsertOne(node);
+                _node.InsertOne (node);
+                node.Before = node.Id;
+                node.Next = new Node ();
+                node.Next.Id = node.Id;
+                _node.ReplaceOne (n => n.Id == node.Id, node);
             }
             lista.Head = node;
             // ------- Circular -------
@@ -129,7 +141,7 @@ namespace Agenda.Services
             {
                 lista.Head = aux.Next;
                 _node.ReplaceOne (n => n.Next == node, aux);
-                if(pos != null)
+                if (pos != null)
                 {
                     pos.Before = null;
                     _node.ReplaceOne (n => n.Before == node.Id, pos);
@@ -241,7 +253,6 @@ namespace Agenda.Services
                 {
                     return node = lista.Head;
                 }
-                node = node.Next;
             }
             return node;
         }
