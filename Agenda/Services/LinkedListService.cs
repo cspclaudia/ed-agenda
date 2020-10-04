@@ -174,8 +174,8 @@ namespace Agenda.Services
             }
             Node node = lista.Head;
             Contato aux = null;
-            int count = 0;
-            while (node != null)
+            int count = 1;
+            while (node.Next.Id != lista.Head.Id)
             {
                 count++;
                 node = node.Next;
@@ -193,7 +193,7 @@ namespace Agenda.Services
                     }
                     node = node.Next;
                 }
-                while (node.Next != null);
+                while (node.Next.Id != lista.Head.Id);
                 node = lista.Head;
             }
             return lista;
@@ -209,8 +209,8 @@ namespace Agenda.Services
             }
             Node node = lista.Head;
             Contato aux = null;
-            int count = 0;
-            while (node != null)
+            int count = 1;
+            while (node.Next.Id != lista.Head.Id)
             {
                 count++;
                 node = node.Next;
@@ -228,7 +228,7 @@ namespace Agenda.Services
                     }
                     node = node.Next;
                 }
-                while (node.Next != null);
+                while (node.Next.Id != lista.Head.Id);
                 node = lista.Head;
             }
             return lista;
