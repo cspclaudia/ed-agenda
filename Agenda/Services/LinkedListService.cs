@@ -18,8 +18,6 @@ namespace Agenda.Services
             _linkedList = database.GetCollection<LinkedList> (settings.LinkedListCollectionName);
         }
 
-        // --- não consegui salvar no banco quando a lista é circular, triste ---
-
         LinkedList lista = new LinkedList ();
         public Node Add (Contato contato)
         {
@@ -31,7 +29,6 @@ namespace Agenda.Services
             }
             Node aux = lista.Head;
             Node node = new Node (contato);
-            // ------- Duplamente Encadeada -------
             if (lista.Head != null)
             {
                 if (aux.Id == aux.Next.Id)
@@ -67,23 +64,6 @@ namespace Agenda.Services
                 _node.ReplaceOne (n => n.Id == node.Id, node);
             }
             lista.Head = node;
-            // ------- Circular -------
-            // Node aux = lista.Head;
-            // var node = new Node (contato);
-            // if (lista.Head != null)
-            // {
-            //     while (aux.Next != lista.Head)
-            //     {
-            //         aux = aux.Next;
-            //     }
-            // }
-            // else
-            // {
-            //     aux = node;
-            // }
-            // node.Next = lista.Head;
-            // lista.Head = node;
-            // aux.Next = lista.Head;
             _linkedList.DeleteOne (node => true);
             _linkedList.InsertOne (lista);
 
@@ -128,8 +108,8 @@ namespace Agenda.Services
         public void Delete (Node node)
         {
             LinkedList lista = _linkedList.Find (head => true).First ();
-            Node aux = lista.Head;
             Node ant = null;
+            Node aux = lista.Head;
             Node pos = aux.Next;
             while ((aux != null) && (aux.Id != node.Id))
             {
@@ -139,17 +119,28 @@ namespace Agenda.Services
             }
             if (ant == null)
             {
-                lista.Head = aux.Next;
-                _node.ReplaceOne (n => n.Next == node, aux);
-                if (pos != null)
+                if (aux.Id != aux.Next.Id)
                 {
-                    pos.Before = null;
+                    pos.Before = aux.Before;
+                    lista.Head = pos;
                     _node.ReplaceOne (n => n.Before == node.Id, pos);
+                    do
+                    {
+                        aux = aux.Next;
+                    }
+                    while (aux.Next.Contato != null);
+                    aux.Next.Id = pos.Id;
+                    _node.ReplaceOne (n => n.Before == node.Id, aux);
+                }
+                else 
+                {
+                    lista.Head = null;
                 }
             }
-            else if (pos == null)
+            else if (pos.Id == lista.Head.Id)
             {
-                ant.Next = null;
+                lista.Head.Before = ant.Id;
+                ant.Next = aux.Next;
                 _node.ReplaceOne (n => n.Next == node, ant);
             }
             else

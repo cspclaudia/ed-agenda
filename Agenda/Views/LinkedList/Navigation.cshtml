@@ -47,8 +47,8 @@
     </tbody>
 </table>
 
-@* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Anterior</a> *@
-@* <a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Id">Próximo</a> *@
+<a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Before">Anterior</a>
+<a class="btn btn-primary" asp-action="Navigation" asp-route-id="@aux.Next.Id">Próximo</a>
 
 <input type="hidden" value="@aux.Next.Id" id="next">
 <input type="hidden" value="@aux.Before" id="before">

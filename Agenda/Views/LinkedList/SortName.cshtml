@@ -23,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Head.Before)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Head.Next.Id)
+                @Html.DisplayNameFor(model => model.Head.Next)
             </th>
             <th></th>
         </tr>
@@ -31,6 +31,7 @@
     <tbody>
     @{ var aux = Model.Head; }
     @while(aux != null) {
+        if(aux.Next == null){break;}
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => aux.Id)

@@ -11,7 +11,7 @@
     @if(Model.Head != null && Model.Head.Next != null){
         <p class="col-md-3"><a asp-action="SortName">Ordenar por Nome</a></p>
         <p class="col-md-3"><a asp-action="SortEmail">Ordenar por Email</a></p>
-        <p class="col-md-3" id="teste"><a asp-action="Navigation" asp-route-id="@Model.Id">Navegar pelos Contatos</a></p>
+        <p class="col-md-3"><a asp-action="Navigation" asp-route-id="@Model.Id" id="teste">Navegar pelos Contatos</a></p>
     }
 </div>
 
@@ -36,6 +36,7 @@
     <tbody>
     @{ var aux = Model.Head; }
     @while(aux != null) {
+        if(aux.Next == null){break;}
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => aux.Id)
